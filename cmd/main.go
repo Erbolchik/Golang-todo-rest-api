@@ -2,6 +2,8 @@ package main
 
 import (
 	"log"
+	"github.com/Erbolchik/Golang-todo-rest-api"
+	"github.com/Erbolchik/Golang-todo-rest-api/pkg/handler"
 )
 
 func main() {
