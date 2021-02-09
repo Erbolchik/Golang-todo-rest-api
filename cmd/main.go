@@ -2,12 +2,17 @@ package main
 
 import (
 	"log"
-	"github.com/Erbolchik/Golang-todo-rest-api"
+
+	todo "github.com/Erbolchik/Golang-todo-rest-api"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/handler"
+	"github.com/Erbolchik/Golang-todo-rest-api/pkg/repository"
+	"github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
 )
 
 func main() {
-	handlers := new(handler.Handler)
+	repos := repository.NewRepository()
+	services := service.NewService(repos)
+	handlers := handler.NewHandler(services)
 
 	srv := new(todo.Server)
 	if err := srv.Run("8080", handlers.InitRoutes()); err != nil {
