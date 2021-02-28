@@ -7,6 +7,7 @@ import (
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/handler"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/repository"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
+	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 )
 
@@ -18,8 +19,8 @@ func main() {
 		Host:     viper.GetString("db.host"),
 		Port:     viper.GetString("db.port"),
 		Username: viper.GetString("db.username"),
-		Password: viper.GetString("db.password"),
 		DBName:   viper.GetString("db.dbname"),
+		Password: viper.GetString("db.password"),
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
 
