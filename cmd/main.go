@@ -1,19 +1,18 @@
 package main
 
 import (
-	"log"
-
 	todo "github.com/Erbolchik/Golang-todo-rest-api"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/handler"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/repository"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
 	_ "github.com/lib/pq"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
 func main() {
 	if err := initConfig(); err != nil {
-		log.Fatalf("error initializing configs: %s", err.Error())
+		logrus.Fatalf("error initializing configs: %s", err.Error())
 	}
 	db, err := repository.NewPostgresDB(repository.Config{
 		Host:     viper.GetString("db.host"),
@@ -25,7 +24,7 @@ func main() {
 	})
 
 	if err != nil {
-		log.Fatalf("failed to initialize db: %s", err.Error())
+		logrus.Fatalf("failed to initialize db: %s", err.Error())
 	}
 
 	repos := repository.NewRepository(db)
@@ -34,7 +33,7 @@ func main() {
 
 	srv := new(todo.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
-		log.Fatalf("error occurred while running http server: %s", err.Error())
+		logrus.Fatalf("error occurred while running http server: %s", err.Error())
 	}
 }
 
