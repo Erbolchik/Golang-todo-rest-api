@@ -1,8 +1,8 @@
 port: '8080'
 
-db: username:"postgres"
-  password:"1234"
-  host:"localhost"
-  port:"5432"
-  dbname:"todoGolang"
-  sslmode:"disable"
+db:
+  username: 'postgres'
+  host: 'localhost'
+  port: '5432'
+  dbname: 'todoGolang'
+  sslmode: 'disable'
