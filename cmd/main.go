@@ -6,7 +6,7 @@ import (
 	todo "github.com/Erbolchik/Golang-todo-rest-api"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/handler"
 	"github.com/Erbolchik/Golang-todo-rest-api/pkg/repository"
-	"github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
+	service "github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"

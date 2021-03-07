@@ -1,15 +1,16 @@
 package handler
 
 import (
-	"github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
+	server "github.com/Erbolchik/Golang-todo-rest-api/pkg/service"
+
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
-	services *service.Service
+	services *server.Service
 }
 
-func NewHandler(services *service.Service) *Handler {
+func NewHandler(services *server.Service) *Handler {
 	return &Handler{services: services}
 }
 
