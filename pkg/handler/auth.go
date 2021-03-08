@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 
 	todo "github.com/Erbolchik/Golang-todo-rest-api"
@@ -27,5 +28,5 @@ func (h *Handler) signUp(c *gin.Context) { //registration
 }
 
 func (h *Handler) signIn(c *gin.Context) {
-
+	fmt.Println("Test test")
 }
