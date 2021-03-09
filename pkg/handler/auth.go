@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"net/http"
 
 	todo "github.com/Erbolchik/Golang-todo-rest-api"
@@ -27,6 +26,26 @@ func (h *Handler) signUp(c *gin.Context) { //registration
 	})
 }
 
+type signInInput struct {
+	UserName string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
+}
+
 func (h *Handler) signIn(c *gin.Context) {
-	fmt.Println("Test test")
+	var input signInInput
+
+	if err := c.BindJSON(&input); err != nil {
+		newErrorResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	token, err := h.services.Authorization.GenerateToken(input.UserName, input.Password)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, map[string]interface{}{
+		"id": token,
+	})
 }
