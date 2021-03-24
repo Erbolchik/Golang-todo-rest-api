@@ -5,5 +5,5 @@ type TodoListPostgres struct {
 }
 
 func NewTodoListPostgres (db *sqlx.DB) *TodoListPostgres{
-	return *TodoListPostgres{db:db}
+	return &TodoListPostgres{db:db}
 }
